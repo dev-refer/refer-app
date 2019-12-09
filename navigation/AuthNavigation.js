@@ -4,6 +4,7 @@ import Register from '../screens/Auth/Register';
 import ConfirmRegister from '../screens/Auth/ConfirmRegister';
 import Login from '../screens/Auth/Login';
 import ForgetPassword from '../screens/Auth/ForgetPassword';
+import Home from '../screens/Home'
 
 
 const authNavigation = createStackNavigator({
@@ -48,6 +49,17 @@ const authNavigation = createStackNavigator({
                 borderBottomColor: 'white'
             }
         }),
+    },
+    Home: {
+        screen: Home,
+        // headerMode: 'none',
+        navigationOptions: () => ({
+            // headerStyle: {
+            //     borderBottomColor: 'white'
+            // }
+            header: null
+
+        })
     }
 })
 

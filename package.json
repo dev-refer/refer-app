@@ -27,7 +27,9 @@
     "react-native-cache-store": "^1.0.2",
     "react-native-datepicker": "^1.7.2",
     "react-native-gesture-handler": "~1.3.0",
+    "react-native-phone-input": "^0.2.4",
     "react-native-picker-select": "^6.3.3",
+    "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.7",
     "react-navigation": "^3.12.0"
   },

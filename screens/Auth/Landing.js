@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import iconLanding from '../../assets/images/refer_landing.png'
+import iconLanding from '../../assets/images/refer_landingpage.jpg'
 import CacheStorage from 'react-native-cache-store'
 
 import axios from '../../libs/axios'
@@ -10,6 +10,7 @@ import {
     ImageBackground,
     SafeAreaView,
     StyleSheet,
+    TouchableOpacity
 } from 'react-native'
 
 import Button from '../../components/Button/Button'
@@ -27,7 +28,7 @@ const style = StyleSheet.create({
     layer: {
         flex: 1,
         width: '100%',
-        backgroundColor: 'rgba(0,0,0,0.7)',
+        // backgroundColor: 'rgba(0,0,0,0.7)',
     },
     safeArea: {
         flex: 1,
@@ -42,17 +43,52 @@ const style = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 80
     },
-    bodyText: {
+    worldText: {
+        fontSize: 37,
+        color: '#ff5c33',
+        fontWeight: 'bold',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { height: 1 },
+        textShadowRadius: 10,
+        shadowOpacity: 1000
+    },
+    toExploreText: {
         fontSize: 37,
         color: 'white',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { height: 1 },
+        textShadowRadius: 10,
+        shadowOpacity: 1000
     },
     titleText: {
-        fontSize: 40,
-        color: 'rgb(253,106,2)',
+        fontSize: 20,
+        color: 'white',
         fontWeight: 'bold',
-        marginTop: 20
-    }
+        marginTop: 20,
+        textAlign: 'right'
+    },
+    button: {
+        // borderRadius: 25,
+        // paddingTop: 3,
+        // paddingBottom: 1,
+        // paddingLeft: 3,
+        // paddingRight: 3,
+        // backgroundColor: '#000000',
+        // shadowColor: 'rgba(0, 0, 0, 0.1)',
+        // shadowOpacity: -1,
+        // elevation: 6,
+        // shadowRadius: 25,
+        // shadowOffset: { width: 1, height: 1 },
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: 10, height: 10 },
+        textShadowRadius: 10
+    },
+    // textWithShadow: {
+    //     textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    //     textShadowOffset: { width: -1, height: 1 },
+    //     textShadowRadius: 10
+    // }
 })
 
 export default function Landing(props) {
@@ -103,43 +139,45 @@ export default function Landing(props) {
                         <View style={style.contentContainer}>
                             <View style={{ alignItems: 'center' }}>
                                 <View style={{ width: 325 }}>
-                                    <Text style={style.titleText}>
-                                        Refer
+                                    <Text style={style.titleText} onPress={() => navigation.navigate('Main')}>
+                                        Skip
                                     </Text>
                                 </View>
                             </View>
                             <View style={{ alignItems: 'center' }}>
                                 <View style={{ width: 325 }}>
-                                    <Text style={style.bodyText}>
-                                        The World,
+                                    <Text style={style.worldText}>
+                                        World
                                     </Text>
-                                    <Text style={style.bodyText}>
-                                        is yours to explore
+                                    <Text style={style.toExploreText}>
+                                        to explore
                                     </Text>
                                 </View>
                             </View>
 
 
                             <View style={style.buttonContainer}>
-                                <Button
-                                    onPress={navigateToRegister}
-                                    title='SIGN UP'
-                                    titleColor='white'
-                                    width={325}
-                                    height={42}
-                                    fontSize={17}
-                                    backgroundColor='rgb(255,92,51)'
-                                    borderWidth={0}
-                                    borderColor={Color.orangeRefer}
-                                />
+                                <TouchableOpacity style={style.button}>
+                                    <Button
+                                        onPress={navigateToRegister}
+                                        title='Register'
+                                        titleColor='white'
+                                        width={230}
+                                        height={42}
+                                        fontSize={17}
+                                        backgroundColor='rgb(255,92,51)'
+                                        borderWidth={0}
+                                        borderColor={Color.orangeRefer}
+                                    />
+                                </TouchableOpacity>
                                 <Button
                                     onPress={navigateToLogin}
-                                    title='LOG IN'
-                                    titleColor='white'
+                                    title='Sign In'
+                                    titleColor='rgb(255,92,51)'
                                     fontSize={17}
-                                    width={325}
+                                    width={230}
                                     height={42}
-                                    backgroundColor='transparent'
+                                    backgroundColor='white'
                                     borderColor='white'
                                 />
                             </View>

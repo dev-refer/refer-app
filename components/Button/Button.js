@@ -6,6 +6,8 @@ import {
     StyleSheet,
     Text
 } from 'react-native'
+// import Icon from 'react-native-vector-icons/AntDesign'
+
 
 export default function ({ title, titleColor, backgroundColor, width, fontSize, height, borderColor, borderRadius, borderWidth, onPress }) {
     const style = StyleSheet.create({
@@ -32,6 +34,7 @@ export default function ({ title, titleColor, backgroundColor, width, fontSize, 
             <Text style={style.textStyle}>
                 {title || ''}
             </Text>
+            {/* {icon ? <Icon name={icon} /> : null} */}
         </TouchableOpacity>
     )
 }   

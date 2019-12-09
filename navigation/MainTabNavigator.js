@@ -12,9 +12,18 @@ import ProfileScreen from '../screens/ProfileScreen';
 import Home from '../screens/Home';
 import AddJournalScreen from '../screens/AddJournalScreen';
 
+// import { Entypo } from '@expo/vector-icons';
+
 const tabNavigator = createBottomTabNavigator({
   Home: {
     screen: Home,
+    // navigationOptions: {
+    //   tabBarIcon: tabInfo => {
+    //     return (
+    //       <Entypo name="home" size={25} color={tabInfo.tintColor} />
+    //     );
+    //   }
+    // }
   },
   Search: {
     screen: SearchScreen,

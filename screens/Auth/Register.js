@@ -19,7 +19,16 @@ import mailIcon from '../../assets/images/mailIcon.png'
 import passwordIcon from '../../assets/images/passwordIcon.png'
 import Color from '../../constants/Colors'
 
-export default function ({ navigation }) {
+import { connect } from 'react-redux';
+
+const propsRedux = state => ({
+    state
+})
+const dispatchRedux = dispatch => ({
+
+})
+
+const registerScreen = ({ navigation, state }) => {
 
     const [validationColor, setValidationColor] = useState('rgb(158,158,158)')
     const [name, setName] = useState('')
@@ -60,7 +69,8 @@ export default function ({ navigation }) {
             marginTop: 40
         },
         formContainer: {
-            flex: 1, alignItems: "center",
+            // flex: 1, 
+            alignItems: "center",
             justifyContent: 'space-between',
             marginTop: 0,
             marginLeft: 40,
@@ -286,7 +296,7 @@ export default function ({ navigation }) {
                 </View>
             </View>
 
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 100 }}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <ButtonCustom
                     title='Register'
                     titleColor='white'
@@ -312,3 +322,8 @@ export default function ({ navigation }) {
         </View>
     )
 }
+
+export default connect(
+    propsRedux,
+    dispatchRedux
+)(registerScreen)

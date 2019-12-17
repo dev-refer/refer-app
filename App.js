@@ -2,35 +2,14 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
+
+import { store, history } from './redux/store/index'
+import { Provider } from "react-redux";
 
 import AppNavigator from './navigation/AppNavigator';
 
-export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
-
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return (
-      <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
-      />
-    );
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
-    );
-  }
-}
-
 async function loadResourcesAsync() {
-  console.log('masuk');
-
   return Promise.all([
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),
@@ -39,6 +18,7 @@ async function loadResourcesAsync() {
       require('./assets/images/passwordIcon.png'),
       require('./assets/images/refer_landing.png'),
       require('./assets/images/userIcon.png'),
+      require('./assets/images/splash.png'),
     ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
@@ -50,19 +30,41 @@ async function loadResourcesAsync() {
   ]);
 }
 
-function handleLoadingError(error) {
-  // In this case, you might want to report the error to your error reporting
-  // service, for example Sentry
-  console.log(error);
-}
-
-function handleFinishLoading(setLoadingComplete) {
-  setLoadingComplete(true);
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
 });
+
+class App extends React.Component {
+  state = {
+    loading: true
+  }
+  finishLoading() {
+    this.setState({ loading: false })
+  }
+  handleError(e) {
+    console.log(e)
+  }
+  render() {
+    return (
+      <Provider store={store}>
+        {
+          !this.props.skipLoadingScreen && !this.state.loading
+            ? <AppLoading
+              startAsync={loadResourcesAsync}
+              onError={(e) => { this.handleError(e) }}
+              onFinish={this.finishLoading}
+            />
+            : <View style={styles.container}>
+              {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+              <AppNavigator />
+            </View>
+        }
+      </Provider>
+    )
+  }
+}
+
+export default App;

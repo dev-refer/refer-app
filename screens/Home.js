@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HomeHighlight from '../assets/images/home_highlight.png'
+import HomeHighlight from '../assets/images/bedugul.jpg'
 import InfoButton from '../assets/images/home_info_button.png'
 import {
     View,
@@ -22,20 +22,15 @@ import travel from '../assets/images/travel.png'
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'space-between'
-        // justifyContent: 'flex-start'
-        // width: '100%'
     },
     backgroundStyle: {
-        // width: '100%',
-        flex: 1
-        // backgroundColor: 'blue',
-
+        width: '100%',
+        height: '100%',
     },
     test: {
         // resizeMode: 'contain'
         // alignItems: 'flex-start'
-        top: -80
+        // top: -80
     },
     categoryTextStyle: {
         fontSize: 12,
@@ -84,32 +79,31 @@ const style = StyleSheet.create({
 
 export default function Home() {
     return (
-
         <View style={style.container}>
-            <ImageBackground
-                imageStyle={style.test}
-                style={style.backgroundStyle}
-                source={HomeHighlight}
-            >
-                <View style={{ alignItems: 'center', top: 100 }}>
-                    <Text style={style.categoryTextStyle}>Sightsee</Text>
-                    <Text style={style.spotTextStyle}>Penglipuran Village</Text>
-                    <Text style={style.cityTextStyle}>Bali</Text>
-                    <Image source={InfoButton} style={{ height: 50, width: 40 }} />
-                </View>
-                <View style={{ alignItems: 'center', top: 150 }}>
-                    <ButtonCustom
-                        title='Select Location'
-                        titleColor='black'
-                        backgroundColor='white'
-                        width={122}
-                        height={36}
-                        fontSize={10}
-                        borderColor='white'
-                    >
-                    </ButtonCustom>
-                </View>
-            </ImageBackground>
+            <View style={{ height: '50%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                <ImageBackground
+                    imageStyle={style.test}
+                    style={style.backgroundStyle}
+                    source={HomeHighlight}
+                >
+                    <View style={{ alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+                        <Text style={style.categoryTextStyle}>Sightsee</Text>
+                        <Text style={style.spotTextStyle}>Penglipuran Village</Text>
+                        <Text style={style.cityTextStyle}>Bali</Text>
+                        <Image source={InfoButton} style={{ height: 50, width: 40, marginBottom: 40 }} />
+                        <ButtonCustom
+                            title='Select Location'
+                            titleColor='black'
+                            backgroundColor='white'
+                            width={122}
+                            height={36}
+                            fontSize={10}
+                            borderColor='white'
+                        >
+                        </ButtonCustom>
+                    </View>
+                </ImageBackground>
+            </View>
             <ScrollView style={{ flex: 1 }}>
                 <View style={style.categoriesManageSection}>
                     <Text style={style.categoriesText}>Your Categories</Text>

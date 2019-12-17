@@ -11,6 +11,7 @@ import SavedScreen from '../screens/SavedScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import Home from '../screens/Home';
 import AddJournalScreen from '../screens/AddJournalScreen';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 
 // import { Entypo } from '@expo/vector-icons';
 
@@ -18,9 +19,9 @@ const tabNavigator = createBottomTabNavigator({
   Home: {
     screen: Home,
     // navigationOptions: {
-    //   tabBarIcon: tabInfo => {
+    //   tabBarIcon: ({ tintColor }) => {
     //     return (
-    //       <Entypo name="home" size={25} color={tabInfo.tintColor} />
+    //       <Icon name="home" size={25} color="#900" />
     //     );
     //   }
     // }
@@ -37,9 +38,10 @@ const tabNavigator = createBottomTabNavigator({
   Profile: {
     screen: ProfileScreen,
   },
-}, {
-  headerMode: 'none'
-});
+},
+  {
+    headerMode: 'none'
+  });
 
 tabNavigator.path = '';
 

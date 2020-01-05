@@ -1,8 +1,9 @@
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { store, history } from './redux/store/index'
 import { Provider } from "react-redux";
@@ -10,7 +11,7 @@ import { Provider } from "react-redux";
 import AppNavigator from './navigation/AppNavigator';
 
 async function loadResourcesAsync() {
-  return Promise.all([
+  const test = await Promise.all([
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),
       require('./assets/images/robot-prod.png'),
@@ -22,10 +23,10 @@ async function loadResourcesAsync() {
     ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
-      // ...Ionicons.font,
+      ...Ionicons.font,
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
-      // // rsemove this if you are not using it in your app
-      // space_mono: require('./assets/fonts/SpaceMono-Regular.ttf'),
+      // rsemove this if you are not using it in your app
+      'space_mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
     }),
   ]);
 }
@@ -37,32 +38,35 @@ const styles = StyleSheet.create({
   },
 });
 
+
 class App extends React.Component {
   state = {
     loading: true
   }
-  finishLoading() {
-    this.setState({ loading: false })
+
+  finishLoading(e) {
+    e.setState({ loading: false })
   }
   handleError(e) {
-    console.log(e)
+    console.log(e.message)
   }
   render() {
     return (
-      <Provider store={store}>
+      <>
         {
-          !this.props.skipLoadingScreen && !this.state.loading
+          !this.props.skipLoadingScreen && this.state.loading
             ? <AppLoading
               startAsync={loadResourcesAsync}
               onError={(e) => { this.handleError(e) }}
-              onFinish={this.finishLoading}
+              onFinish={() => { this.finishLoading(this) }}
             />
-            : <View style={styles.container}>
+            : <Provider store={store}><View style={styles.container}>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator />
             </View>
+            </Provider>
         }
-      </Provider>
+      </>
     )
   }
 }

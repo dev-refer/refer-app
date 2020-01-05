@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import travel from '../../assets/images/travel.png'
 
-export default function ({ title, source }) {
+export default function ({ title, source, marginLeft }) {
     const style = StyleSheet.create({
         textStyle: {
             color: 'black',
@@ -19,6 +19,7 @@ export default function ({ title, source }) {
             fontWeight: '200'
         },
         containerStyle: {
+            marginLeft: marginLeft ? marginLeft : 0,
             width: 80,
             height: 80,
             backgroundColor: 'white',

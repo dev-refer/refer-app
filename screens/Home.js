@@ -17,6 +17,8 @@ import CatButton from '../components/Button/CategoryButton'
 import Color from '../constants/Colors'
 import travel from '../assets/images/travel.png'
 
+import Modal from '../components/Modals/CommonModal'
+
 // import ArrowDown from 'react-native-vector-icons/AntDesign'
 
 const style = StyleSheet.create({
@@ -78,6 +80,7 @@ const style = StyleSheet.create({
 // const HomeHighlight = require('../assets/images/home_highlight@2x.png')
 
 export default function Home() {
+    [modalLocation, setModalLocation] = useState(false)
     return (
         <View style={style.container}>
             <View style={{ height: '50%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
@@ -99,6 +102,7 @@ export default function Home() {
                             height={36}
                             fontSize={10}
                             borderColor='white'
+                            onPress={() => { setModalLocation(true) }}
                         >
                         </ButtonCustom>
                     </View>
@@ -161,7 +165,29 @@ export default function Home() {
                         <Image />
                     </CatButton>
                 </View>
+                <View style={style.categoriesManageSection}>
+                    <Text style={style.categoriesText}>Highlights</Text>
+                </View>
+                <ScrollView horizontal>
+                    <View style={style.categoriesButtonSection}>
+                        <CatButton
+                            title=''
+                            source={travel}
+                            marginLeft={10}
+                        >
+                            <Image />
+                        </CatButton>
+                        <CatButton
+                            title=''
+                            source={travel}
+                            marginLeft={10}
+                        >
+                            <Image />
+                        </CatButton>
+                    </View>
+                </ScrollView>
             </ScrollView>
+            <Modal isOpen={modalLocation} />
         </View>
     )
 }

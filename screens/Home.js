@@ -14,8 +14,11 @@ import {
 } from 'react-native'
 import ButtonCustom from '../components/Button/Button'
 import CatButton from '../components/Button/CategoryButton'
+import Banner from '../components/Banner/EventBanner'
 import Color from '../constants/Colors'
 import travel from '../assets/images/travel.png'
+import jazzBanner from '../assets/images/jazz-festival-poster.png'
+import foodBanner from '../assets/images/streetfood-festival-poster.png'
 
 // import ArrowDown from 'react-native-vector-icons/AntDesign'
 
@@ -77,34 +80,41 @@ const style = StyleSheet.create({
 
 // const HomeHighlight = require('../assets/images/home_highlight@2x.png')
 
-export default function Home() {
+export default function Home(props) {
+    const { navigation } = props
+
+    const navigateToSelectLoc = () => {
+        navigation.navigate('SelectLoc')
+    }
+
     return (
         <View style={style.container}>
-            <View style={{ height: '50%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                <ImageBackground
-                    imageStyle={style.test}
-                    style={style.backgroundStyle}
-                    source={HomeHighlight}
-                >
-                    <View style={{ alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-                        <Text style={style.categoryTextStyle}>Sightsee</Text>
-                        <Text style={style.spotTextStyle}>Penglipuran Village</Text>
-                        <Text style={style.cityTextStyle}>Bali</Text>
-                        <Image source={InfoButton} style={{ height: 50, width: 40, marginBottom: 40 }} />
-                        <ButtonCustom
-                            title='Select Location'
-                            titleColor='black'
-                            backgroundColor='white'
-                            width={122}
-                            height={36}
-                            fontSize={10}
-                            borderColor='white'
-                        >
-                        </ButtonCustom>
-                    </View>
-                </ImageBackground>
-            </View>
-            <ScrollView style={{ flex: 1 }}>
+            <ScrollView >
+                <View style={{ height: '50%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                    <ImageBackground
+                        imageStyle={style.test}
+                        style={style.backgroundStyle}
+                        source={HomeHighlight}
+                    >
+                        <View style={{ alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+                            <Text style={style.categoryTextStyle}>Sightsee</Text>
+                            <Text style={style.spotTextStyle}>Penglipuran Village</Text>
+                            <Text style={style.cityTextStyle}>Bali</Text>
+                            <Image source={InfoButton} style={{ height: 50, width: 40, marginBottom: 40 }} />
+                            <ButtonCustom
+                                title='Select Location'
+                                titleColor='black'
+                                backgroundColor='white'
+                                width={122}
+                                height={36}
+                                fontSize={10}
+                                borderColor='white'
+                                onPress={navigateToSelectLoc}
+                            >
+                            </ButtonCustom>
+                        </View>
+                    </ImageBackground>
+                </View>
                 <View style={style.categoriesManageSection}>
                     <Text style={style.categoriesText}>Your Categories</Text>
                     <Text style={style.manageText}>Manage</Text>
@@ -160,6 +170,39 @@ export default function Home() {
                     >
                         <Image />
                     </CatButton>
+                </View>
+                <View style={style.categoriesManageSection}>
+                    <Text style={style.categoriesText}>Highlights</Text>
+                </View>
+                <View style={style.categoriesButtonSection}>
+                    <Banner
+                        source={jazzBanner}
+                    >
+                    </Banner>
+                    <Banner
+                        source={foodBanner}
+                    >
+                    </Banner>
+                </View>
+                <View style={style.categoriesButtonSection}>
+                    <Banner
+                        source={jazzBanner}
+                    >
+                    </Banner>
+                    <Banner
+                        source={foodBanner}
+                    >
+                    </Banner>
+                </View>
+                <View style={style.categoriesButtonSection}>
+                    <Banner
+                        source={jazzBanner}
+                    >
+                    </Banner>
+                    <Banner
+                        source={foodBanner}
+                    >
+                    </Banner>
                 </View>
             </ScrollView>
         </View>

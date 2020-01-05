@@ -15,7 +15,7 @@ export default function SavedScreen() {
     return (
         <View style={style.container}>
             <View style={style.screenTitle}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>My Journal</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Select Location</Text>
             </View>
         </View>
     )

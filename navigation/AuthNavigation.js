@@ -4,7 +4,8 @@ import Register from '../screens/Auth/Register';
 import ConfirmRegister from '../screens/Auth/ConfirmRegister';
 import Login from '../screens/Auth/Login';
 import ForgetPassword from '../screens/Auth/ForgetPassword';
-import Home from '../screens/Home'
+import Home from '../screens/Home';
+import SelectLoc from '../screens/SelectLocationHome';
 
 
 const authNavigation = createStackNavigator({
@@ -58,6 +59,19 @@ const authNavigation = createStackNavigator({
             //     borderBottomColor: 'white'
             // }
             header: null
+
+        })
+    },
+    SelectLoc: {
+        screen: SelectLoc,
+        navigationOptions: () => ({
+            headerRight: () => (
+                <Button
+                    onPress={() => alert('This is a button!')}
+                    title="Info"
+                    color="#fff"
+                />
+            ),
 
         })
     }

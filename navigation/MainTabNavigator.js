@@ -29,9 +29,9 @@ const tabNavigator = createBottomTabNavigator({
   Search: {
     screen: SearchScreen,
   },
-  Add: {
-    screen: AddJournalScreen
-  },
+  // Add: {
+  //   screen: AddJournalScreen
+  // },
   Saved: {
     screen: SavedScreen,
   },

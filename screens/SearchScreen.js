@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { ScrollView, View, Text, StyleSheet, TextInput } from 'react-native'
+import SpotCard from '../components/Banner/SpotCard'
+import Banner from '../assets/images/jazz-festival-poster.png'
+import ontri from '../assets/images/onthree.png'
 
 const style = StyleSheet.create({
     container: {
@@ -27,10 +30,21 @@ export default function SearchScreen() {
                     placeholder="Search"
                 />
             </View>
-            <View style={{ padding: 85 }}>
-                <Text style={style.centerText}>
+
+            <View style={{
+                flex: 1,
+                marginHorizontal: 10,
+                flexWrap: 'wrap',
+                flexDirection: 'column'
+            }}>
+                {/* <Text style={style.centerText}>
                     Find something you love
-                </Text>
+                </Text> */}
+                <SpotCard source={ontri} title='On Three' />
+                <SpotCard source={ontri} title='On Three' />
+                <SpotCard source={ontri} title='On Three' />
+
+
             </View>
         </View>
     )

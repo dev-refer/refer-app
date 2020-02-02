@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Modal, Text, View, Alert, StyleSheet, TextInput, ScrollView } from 'react-native';
 import { isIphoneX } from '../../libs/platform';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons';
 
 
 export default function (props) {
@@ -18,7 +17,6 @@ export default function (props) {
     })
     return (
         <View>
-                  {/* <Ionicons name="md-checkmark-circle" size={32} color="green" /> */}
 
             <Modal
                 animationType="slide"

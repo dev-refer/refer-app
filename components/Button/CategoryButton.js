@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import travel from '../../assets/images/travel.png'
 
-export default function ({ title, source, marginLeft }) {
+export default function ({ title, source, marginLeft, onPress }) {
     const style = StyleSheet.create({
         textStyle: {
             color: 'black',
@@ -43,7 +43,7 @@ export default function ({ title, source, marginLeft }) {
         }
     })
     return (
-        <TouchableOpacity style={style.containerStyle}>
+        <TouchableOpacity style={style.containerStyle} onPress={onPress}>
             <Image source={source} style={style.iconStyle} />
             <Text style={style.textStyle}>
                 {title || ''}

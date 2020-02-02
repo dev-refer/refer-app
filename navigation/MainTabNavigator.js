@@ -12,11 +12,13 @@ import ProfileScreen from '../screens/ProfileScreen';
 import Home from '../screens/Home';
 import AddJournalScreen from '../screens/AddJournalScreen';
 
+import HomeStack from './HomeNavigationStack/HomeNavigationStack'
+
 // import { Entypo } from '@expo/vector-icons';
 
 const tabNavigator = createBottomTabNavigator({
   Home: {
-    screen: Home,
+    screen: HomeStack,
     // navigationOptions: {
     //   tabBarIcon: tabInfo => {
     //     return (

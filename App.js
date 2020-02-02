@@ -29,6 +29,7 @@ async function loadResourcesAsync() {
       'space_mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
     }),
   ]);
+  console.log(test)
 }
 
 const styles = StyleSheet.create({
@@ -48,7 +49,7 @@ class App extends React.Component {
     e.setState({ loading: false })
   }
   handleError(e) {
-    console.log(e.message)
+    console.log(e.message, '=======================')
   }
   render() {
     return (
